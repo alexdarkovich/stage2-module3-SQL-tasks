@@ -1,0 +1,3 @@
+select distinct * from student inner join mark on student.id = mark.student_id group by student_id having avg(mark) > 8;
+select distinct * from student inner join mark on student.id = mark.student_id group by student_id having min(mark) > 7;
+select id, name from student inner join payment on student.id = payment.student_id having count(amount) > 2 and payment_date between '2019-01-01' AND '2019-12-31';
