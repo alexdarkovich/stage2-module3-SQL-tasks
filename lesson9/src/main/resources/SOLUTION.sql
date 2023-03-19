@@ -1,3 +1,3 @@
-select distinct * from student inner join mark on student.id = mark.student_id group by student_id having avg(mark) > 8;
-select distinct * from student inner join mark on student.id = mark.student_id group by student_id having min(mark) > 7;
-select id, name from student inner join payment on student.id = payment.student_id having count(amount) > 2 and payment_date between '2019-01-01' AND '2019-12-31';
+SELECT DISTINCT * FROM Student WHERE id IN (SELECT student_id FROM Mark GROUP BY student_id HAVING AVG(mark) > 8);
+SELECT DISTINCT id, name FROM Student WHERE id IN (SELECT student_id FROM Mark GROUP BY student_id HAVING MIN(mark) > 7);
+SELECT DISTINCT s.id, s.name FROM Student s JOIN Payment p ON s.id = p.student_id WHERE p.payment_date BETWEEN '2019-01-01' AND '2019-12-31' GROUP BY s.id HAVING COUNT(p.id) > 2;
